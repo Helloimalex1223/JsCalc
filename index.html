@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
-        <div class="topTitle"><h1 class="title">Alex's Calculator</h1></div>
-        <div class="calculatorWrapper">
-                <div class="screen">
-                    <p class = "input"></p>
-                </div>
-                <div class="buttons">
-                    <button id="clear">Clear</button>
-                    <button id = 7>7</button>
-                    <button id = 8>8</button>
-                    <button id = 9>9</button>
-                    <button id = 4>4</button>
-                    <button id = 5>5</button>
-                    <button id = 6>6</button>
-                    <button id = 1>1</button>
-                    <button id = 2>2</button>
-                    <button id = 3>3</button>
-                    <button id = 0>0</button>
-                    <button class = "operandButtons" id = multiply>x</button>
-                    <button class = "operandButtons" id = divide>/</button>
-                    <button class = "operandButtons" id = add>+</button>
-                    <button class = "operandButtons" id = subtract>-</button>
-                    <button class = "operandButtons" id = "=">=</button>              
-                </div>
+        <div class="sideL">
+            <h2></h2>
         </div>
-        <div class="lower"></div>
+        <div class="calculator">
+            <div class="topTitle"><h1 class="title">Alex's Calculator</h1></div>
+            <div class="calculatorWrapper">
+                    <div class="screen">
+                        <p class = "input"></p>
+                    </div>
+                    <div class="buttons">
+                        <button id="clear">Clear</button>
+                        <button id = 7>7</button>
+                        <button id = 8>8</button>
+                        <button id = 9>9</button>
+                        <button id = 4>4</button>
+                        <button id = 5>5</button>
+                        <button id = 6>6</button>
+                        <button id = 1>1</button>
+                        <button id = 2>2</button>
+                        <button id = 3>3</button>
+                        <button id = 0>0</button>
+                        <button class = "operandButtons" id = multiply>x</button>
+                        <button class = "operandButtons" id = divide>/</button>
+                        <button class = "operandButtons" id = add>+</button>
+                        <button class = "operandButtons" id = subtract>-</button>
+                        <button class = "operandButtons" id = "=">=</button>              
+                    </div>
+            </div>
+            <div class="lower"></div>
+        </div>
+        <div class="sideR"></div>
     </div>
 </body>
 </html>
