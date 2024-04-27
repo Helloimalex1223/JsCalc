@@ -11,15 +11,22 @@ html, body
 
 .calculatorWrapper
 {
-    width: 450px;
+    width: 350px;
     background-color: #083D77;
     height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    border: .25rem solid #EBEBD3;
+    border: .25rem solid #0c0c0c;
     border-radius: .5rem; 
+}
+.calculator
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .input
@@ -38,11 +45,9 @@ html, body
 
 .screen
 {
-    background-color: white;
-    height: 100px;
+    background-color: rgb(156, 156, 156);
+    height: 75px;
     width: 80%;
-    border: .25rem solid #77B6EA;
-    border-radius: .5rem;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -53,7 +58,7 @@ html, body
 {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: .5rem;
     flex-wrap: wrap;
     padding-top: 3rem;
     width: 100%;
@@ -68,7 +73,6 @@ html, body
     align-items: center;
     flex-direction: row;
     justify-content: center;
-    background-color: gray;
     height: 100%;
     width: 100%;
 }
