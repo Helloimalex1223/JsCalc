@@ -49,7 +49,16 @@ function operate(operand, a, b)
     }
     else if(operand === "/")
     {
-        return divide(aConvert, bConvert);
+        //divide by zero protection
+        if(bConvert === 0)
+        {
+            alert("No divide by zero allowed! >:( Your answer has been divided by 1 instead.");
+            return divide(aConvert, 1);
+        }
+        else
+        {
+            return divide(aConvert, bConvert);
+        }
     }
 }
 
@@ -66,7 +75,6 @@ let num2Span = document.createElement("span");
 //Sets updates the calculator's DOM with the relevant button id when a button is clicked
 document.addEventListener("click", function(e)
 {
-    console.log(`FIRST VALUE IS ${num1}, SECOND VALUE IS ${num2}, RESULT IS ${resultNum}`);
     if(e.target.tagName === "BUTTON")
     {
         //clear values if the user clicks clear
@@ -77,6 +85,9 @@ document.addEventListener("click", function(e)
             resultNum = "";
             operand = "";
             display.textContent = "";
+            num1Span.textContent = "";
+            num2Span.textContent = "";
+            operandSpan.textContent = "";
         }
         
         //requires both values to be entered before allowing the user to calculate the answer
@@ -108,7 +119,7 @@ document.addEventListener("click", function(e)
             }
 
         //Updates the first number if the operand is not defined
-            else if(operand === "")
+            else if(operand === "" && e.target.id !== "clear")
             {
                 num1 += e.target.id;
                 num1Span.textContent = num1;
@@ -169,6 +180,11 @@ function equals()
     operand = "";
     operandSpan.textContent = "";
     operandClick = 0;
+}
+
+function divideZero()
+{
+
 }
 
 
