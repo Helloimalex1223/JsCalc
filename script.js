@@ -3,7 +3,7 @@
 let num1 = "";
 let num2 = "";
 let displayNum = "";
-let resultNum = 0;
+let resultNum = "";
 let operand = "";
 
 
@@ -31,25 +31,24 @@ function divide (a, b)
 function operate(operand, a, b)
 {
     //converts the strings to numbers when the operand function is called
-    Number(a);
-    Number(b);
+    let aConvert = Number(a);
+    let bConvert = Number(b);
     
     if(operand === "+")
     {
-        resultNum = add(a, b);
-        return resultNum;
+        return add(aConvert, bConvert);
     }
     else if(operand === "-")
     {
-        return subtract(a, b);
+        return subtract(aConvert, bConvert);
     }
     else if(operand === "*")
     {
-        return multiply(a, b);
+        return multiply(aConvert, bConvert);
     }
     else if(operand === "/")
     {
-        return divide(a, b);
+        return divide(aConvert, bConvert);
     }
 }
 
@@ -66,76 +65,84 @@ let num2Span = document.createElement("span");
 document.addEventListener("click", function(e)
 {
     if(e.target.tagName === "BUTTON")
+    
     {
-        //hookup logic surrounding the clear button later...
-        // if(e.target.id === "clear")
-        // {
-        //     operand = ""
-        //     display.textContent += "MO";
-        //     num1 = "";
-        //     num2 = "";
-        //     resultNum = "";
-        //     console.log(num1);
-        //     console.log(num2);
-        // }
+        console.log(`First variable is ${num1}`);
+        console.log(`Second variable is ${num2}`);
+        console.log(`Result variable is ${resultNum}`);
+        //skip this section if an operand button is pressed
+        if(e.target.className !== "operandButtons")
+        {
+        //if the result value is not empty (meaning the user did one calculation), the num1 defaults to the result value. The user can then do another operation on the result number
+        //if the operand is defined, update the second number
+        if(num1 !== "" && operand !== "")
+            {
+                num2 += e.target.id;
+                num2Span.textContent = num2;
+                display.appendChild(num2Span);
+            }    
+        
+        else if(resultNum !== "")
+            {
+                num1 = resultNum;
+                resultNum.toString();
+                resultNum = "";            
+            }
+
+        //Updates the first number if the operand is not defined
+            else if(operand === "")
+            {
+                num1 += e.target.id;
+                num1Span.textContent = num1;
+                display.appendChild(num1Span);
+            }
+
+            console.log(`*****************************`);
+            console.log(`The equation is ${num1} ${operand} ${num2}, with a result of ${resultNum}`)
+        }
 
         //if the buttons are operators, set the operand value to their id
+        
+        else
+        {
         if(e.target.id === "multiply")
         {
             operand = "*"
-            operandSpan.textContent += "*";
+            operandSpan.textContent = "*";
         }
         else if(e.target.id === "divide")
         {
             operand = "/"
-            operandSpan.textContent += "/";
+            operandSpan.textContent = "/";
         }
         else if(e.target.id === "subtract")
         {
             operand = "-"
-            operandSpan.textContent += "-";
+            operandSpan.textContent = "-";
         }
         else if(e.target.id === "add")
         {
             operand = "+"
-            operandSpan.textContent += "+";
+            operandSpan.textContent = "+";
+            console.log(`The equation is ${num1} ${operand} ${num2}, with a result of ${resultNum}`);
         }
         else if(e.target.id === "=")
         {
             let result = operate(operand, num1, num2);
             resultNum = result;
-            //resets the num1 and num2 variables after calling the operate function
-            num1 = "";
-            num2 = "";
+            Number(resultNum);
             display.textContent = result;
+
+            //Sets the num1 variable to the result. Num2 and operand variables are reset after converting them back to a string
+            num2.toString();
+            num1 = resultNum;
+            num2 = "";
+            operand = "";
+            operandSpan.textContent = "";
         }
         //if the buttons are numbers, set the relevant number value to the button's ID. Display it on the screen
-        else
-        {
-        //Updates the first number if the operand is not defined
-            if(operand === "")
-            {
-                num1 += e.target.id;
-                num1Span.textContent = num1;
-                console.log(num1);
-            }
-            //if the operand is defined, update the second number
-            else if(num1 !== "" && operand !== "")
-            {
-                num2 += e.target.id;
-                num2Span.textContent = num2;
-                console.log(num2);
-            }
-            // else if (num1 !== "" && operand !== "")
-            // {
-            //     return resultNum;
-            // }
-            display.appendChild(num1Span);
-            display.appendChild(operandSpan);
-            display.appendChild(num2Span);
-            console.log(num1);
-            console.log(num2);
-            console.log(resultNum);
+        display.textContent = `${num1} ${operand} ${num2}`;
+
         }
     }
 })
